@@ -73,3 +73,38 @@ return response.status(201).json();
 });
 
 
+//criação d login
+
+app.post(`/login`, (request, response) => {
+    const dadosDoUsuario = request.body;
+  
+    const emailCorreto = users.some(
+      (user) => user.email === dadosDoUsuario.email
+    );
+  
+    const senhaCorreta = users.some(
+      (user) => user.password === dadosDoUsuario.password
+    );
+  
+    if (!emailCorreto || !senhaCorreta) {
+      return response.status(400).json({
+        success: false,
+        message: `Email ou senha estão incorretos`,
+        data: {},
+      });
+    }
+  
+    users.forEach((usuario) => (usuario.logado = false));
+  
+    const user = users.find((user) => user.email === dadosDoUsuario.email);
+  
+    user.logado = true;
+  
+    return response.json({
+      success: true,
+      message: `Usuário logado com sucesso`,
+      data: {},
+    });
+  });
+  
+
