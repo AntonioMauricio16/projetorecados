@@ -145,12 +145,8 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
-app.get(`/atualiza/id:`, (request, response) => {
-  return response.json(listaRecados);
-});
 
-
-app.put('/atualiza/id:', (request, response) => {
+app.put('/atualizar/:id', (request, response) => {
  
     const { id } = request.params; 
     const { titulo, descricao } = request.body 
@@ -160,17 +156,15 @@ app.put('/atualiza/id:', (request, response) => {
     if(userIndex > 0){
         return response.status(400).json({ error: 'User not found'});
     }
-    
+  
     const user = {
         id,
         titulo,
         descricao,
         
     };
-    user.push()
   users[userIndex] = user;
       
-  
   return response.json(user);
   });
 
