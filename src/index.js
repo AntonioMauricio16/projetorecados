@@ -145,8 +145,11 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
+app.get(`/atualiza/id:`, (request, response) => {
+  return response.json(listaRecados);
+});
 
-app.put('/users/:id', (request, response) => {
+app.put('/atualiza/id:', (request, response) => {
  
     const { id } = request.params; 
     const { titulo, descricao } = request.body 
