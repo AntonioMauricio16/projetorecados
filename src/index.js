@@ -145,6 +145,9 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
+app.get(`/atualiza/id:`, (request, response) => {
+  return response.json(listaRecados);
+});
 
 
 app.put('/atualiza/id:', (request, response) => {
@@ -170,11 +173,6 @@ app.put('/atualiza/id:', (request, response) => {
   
   return response.json(user);
   });
-  app.get(`/atualiza/id:`, (request, response) => {
-    const user = request.body
-    return response.json(user);
-  });
-  
 
   //deletar recados
 app.delete(`/recados/:id`, (request, response) => {
