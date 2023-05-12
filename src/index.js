@@ -150,6 +150,7 @@ app.get(`/atualizar/:id`, (request, response) => {
 });
 const recadoAtualizado = [];
 app.put('/atualizar/:id', (request, response) => {
+    
   
     const { id } = request.params; 
     const { titulo, descricao } = request.body 
@@ -166,7 +167,8 @@ app.put('/atualizar/:id', (request, response) => {
         descricao,
         
     };
-  recadoAtualizado.push([userIndex] = user);
+  recadoAtualizado[userIndex] = user;
+  recadoAtualizado.push(user);
       
   return response.json(user);
   });
