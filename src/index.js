@@ -153,7 +153,7 @@ app.put('/atualizar/:id', (request, response) => {
  
     const { id } = request.params; 
     const { titulo, descricao } = request.body 
-    const userIndex = listaRecados.findIndex(user => user.id === id);
+    const userIndex = listaRecados.findIndex(dados => dados.id === id);
   
   
     if(userIndex > 0){
