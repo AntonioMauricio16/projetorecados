@@ -149,7 +149,8 @@ app.get(`/atualiza/id:`, (request, response) => {
   return response.json(listaRecados);
 });
 
-app.put('/atualiza/id:', (request, response) => {
+
+/*app.put('/atualiza/id:', (request, response) => {
  
     const { id } = request.params; 
     const { titulo, descricao } = request.body 
@@ -159,18 +160,52 @@ app.put('/atualiza/id:', (request, response) => {
     if(userIndex > 0){
         return response.status(400).json({ error: 'User not found'});
     }
-  
+    
     const user = {
         id,
         titulo,
         descricao,
         
     };
+    user.push()
   users[userIndex] = user;
       
   
   return response.json(user);
+  });*/
+  
+// Atualização de recados
+app.put("/recados/:id", (request, response) => {
+  const recadoId = request.params.id;
+  const dados = request.body;
+  const recadoIndex = listaRecados.findIndex(
+    (recado) => recado.id === recadoId
+  );
+  if (recadoIndex === -1) {
+    return response.status(404).json("Recado não encontrado");
+  }
+  const usuario = users.find((user) => user.logado === true);
+  if (!usuario) {
+    return response.status(400).json({
+      success: false,
+      message: "Necessário fazer login para atualizar um recado",
+      data: {},
+    });
+  }
+  // Fazer validação dos dados do recado
+  const recadoAtualizado = {
+    id: listaRecados[recadoIndex].id,
+    titulo: dados.titulo || listaRecados[recadoIndex].titulo,
+    descricao: dados.descricao || listaRecados[recadoIndex].descricao,
+    autor: listaRecados[recadoIndex].autor,
+  };
+  listaRecados[recadoIndex] = recadoAtualizado;
+  return response.json({
+    success: true,
+    message: "Recado atualizado com sucesso",
+    data: recadoAtualizado,
   });
+});
 
   //deletar recados
 app.delete(`/recados/:id`, (request, response) => {
