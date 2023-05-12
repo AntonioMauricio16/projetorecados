@@ -148,26 +148,26 @@ app.post(`/recados`, (request, response) => {
 
 app.put('/atualizar/:id', (request, response) => {
  
-    const { id } = request.params; 
-    const { titulo, descricao } = request.body 
-    const userIndex = users.findIndex(user => user.id === id);
-  
-  
-    if(userIndex > 0){
-        return response.status(400).json({ error: 'User not found'});
-    }
-  
-    const user = {
-        id,
-        titulo,
-        descricao,
-        
-    };
-  users[userIndex] = user;
-      
-  return response.json(user);
-  });
+  const { id } = request.params; 
+  const { titulo, descricao } = request.body 
+  const userIndex = users.findIndex(user => user.id === id);
 
+
+  if(userIndex > 0){
+      return response.status(400).json({ error: 'User not found'});
+  }
+
+  const user = {
+      id,
+      titulo,
+      descricao,
+      
+  };
+users[userIndex] = user;
+    
+
+return response.json(user);
+});
   //deletar recados
 app.delete(`/recados/:id`, (request, response) => {
     const params = request.params;
