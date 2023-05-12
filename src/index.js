@@ -107,4 +107,40 @@ app.post(`/login`, (request, response) => {
     });
   });
   
+// criação de recados
+const listaRecados = [];
+
+app.get(`/list`, (request, response) => {
+  return response.json(listaRecados);
+});
+
+app.post(`/recados`, (request, response) => {
+  const dados = request.body;
+
+  const usuario = users.find((user) => user.logado === true);
+
+  if (!usuario) {
+    return response.status(400).json({
+      success: false,
+      message: `Necessario fazer login para criar um post`,
+      data: {},
+    });
+  }
+
+  //Fazer validacao dos dados do recado
+
+  const novoRecado = {
+    id: new Date().getTime(),
+    titulo: dados.titulo,
+    descricao: dados.descricao,
+    autor: usuario,
+  };
+
+  listaRecados.push(novoRecado);
+  return response.status(201).json({
+    success: true,
+    message: `Recado criado com sucesso`,
+    data: novoRecado,
+  });
+});
 
