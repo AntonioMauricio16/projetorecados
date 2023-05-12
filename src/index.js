@@ -145,6 +145,9 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
+app.get(`/atualizar/:id`, (request, response) => {
+  return response.json(listaRecados);
+});
 
 app.put('/atualizar/:id', (request, response) => {
  
