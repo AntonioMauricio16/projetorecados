@@ -145,15 +145,15 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
-app.get(`/atualizar/:id`, (request, response) => {
-  return response.json(listaRecados);
+app.get(`/list`, (request, response) => {
+  return response.json(recadoAtualizado);
 });
 
 app.put('/atualizar/:id', (request, response) => {
- 
+  const recadoAtualizado = [];
     const { id } = request.params; 
     const { titulo, descricao } = request.body 
-    const userIndex = listaRecados.findIndex(dados => dados.id === id);
+    const userIndex = recadoAtualizao.findIndex(user => user.id === id);
   
   
     if(userIndex > 0){
@@ -166,7 +166,7 @@ app.put('/atualizar/:id', (request, response) => {
         descricao,
         
     };
-  listaRecados[userIndex] = user;
+  recadoAtualizado[userIndex] = user;
       
   return response.json(user);
   });
