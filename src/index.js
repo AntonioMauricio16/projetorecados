@@ -148,9 +148,9 @@ app.post(`/recados`, (request, response) => {
 app.get(`/atualizar/:id`, (request, response) => {
   return response.json(recadoAtualizado);
 });
-
+const recadoAtualizado = [];
 app.put('/atualizar/:id', (request, response) => {
-  const recadoAtualizado = [];
+  
     const { id } = request.params; 
     const { titulo, descricao } = request.body 
     const userIndex = recadoAtualizao.findIndex(user => user.id === id);
