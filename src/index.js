@@ -168,5 +168,22 @@ app.put('/users/:id', (request, response) => {
   
   return response.json(user);
   });
+
+  //deletar recados
+app.delete(`/recados/:id`, (request, response) => {
+    const params = request.params;
+  
+    const recadoExiste = listaRecados.findIndex(
+      (recado) => recado.id === params.id
+    );
+  
+    if (recadoExiste > 0) {
+      return response.status(400).json(`Recado nao encontrado`);
+    }
+  
+    listaRecados.splice(recadoExiste, 1);
+  
+    return response.json(`Recado deletado`);
+  })
   
 
