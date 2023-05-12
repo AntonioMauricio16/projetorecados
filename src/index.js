@@ -166,7 +166,7 @@ app.put('/atualizar/:id', (request, response) => {
         descricao,
         
     };
-  recadoAtualizado[userIndex] = user;
+  recadoAtualizado.push([userIndex] = user);
       
   return response.json(user);
   });
