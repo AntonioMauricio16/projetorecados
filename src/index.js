@@ -13,6 +13,7 @@ app.listen(80, function () {
   console.log('CORS-enabled web server listening on port 80')
 })
 
+
 import bcrypt, { hash } from "bcrypt";
 const app = express();
 app.use(express.json());
