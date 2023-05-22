@@ -1,7 +1,16 @@
 import express from 'express';
 import bcrypt, { hash } from "bcrypt";
+import cors from "cors"
 const app = express();
 app.use(express.json());
+app.use(cors())
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.get('/', (request, response) => {
 return response.json('OK');
@@ -9,6 +18,7 @@ return response.json('OK');
 });
 
 app.listen(8080, () => console.log('Servidor iniciado'));
+
 
 //lista de usuarios
 let users = [];
