@@ -1,9 +1,7 @@
-import express from 'express';
-import bcrypt, { hash } from "bcrypt";
+
+
 import cors from "cors"
-const app = express();
-app.use(express.json());
-app.use(cors("*"))
+app.use(cors())
 app.use(
   cors({
     origin: "*",
@@ -11,6 +9,11 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+import express from 'express';
+import bcrypt, { hash } from "bcrypt";
+const app = express();
+app.use(express.json());
 
 app.get('/', (request, response) => {
 return response.json('OK');
