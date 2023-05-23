@@ -1,8 +1,6 @@
 
-
-
-
 import express from 'express';
+import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
 const app = express();
 app.use(express.json());
