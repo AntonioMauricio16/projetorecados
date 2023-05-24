@@ -1,18 +1,12 @@
 
-import express from 'express';
-import express, { response } from 'express';
+const express = require('express');
+const express =  require('express');
 import bcrypt, { hash } from "bcrypt";
 const app = express();
 app.use(express.json());
-import cors from "cors"
-app.use(cors())
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+const cors = require("cors") 
+app.use(cors("*"))
+
   
 
 app.get('/', (request, response) => {
@@ -56,7 +50,7 @@ app.post(`/user`, (request, response) => {
   });
 
 
-
+});
 //criação d login
 
 app.post(`/login`, (request, response) => {
@@ -172,6 +166,6 @@ app.delete(`/recados/:id`, (request, response) => {
     listaRecados.splice(recadoExiste, 1);
   
     return response.json(`Recado deletado`);
-  })
+  });
   
-});
+
