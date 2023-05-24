@@ -57,12 +57,6 @@ if (existe) {
     mensagem: "Outro usuário já está cadastrado com este e-mail.",
   });
 }
-users.push({
-  id: Math.floor(Math.random() * 67676),
-  nome: user.nome,
-  email: user.email,
- senha: hash
-});
 
 if (
   !user.email ||
