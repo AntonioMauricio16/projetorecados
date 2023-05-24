@@ -1,5 +1,5 @@
 const LocalStorage = require('node-localstorage').LocalStorage;
-  const localStorage = new LocalStorage('./localStorage');
+const localStorage = new LocalStorage('./localStorage');
 import express from 'express';
 import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
@@ -86,9 +86,10 @@ return response.status(201).json();
   });
 });
 
-function salavarUsers(User){
-  localStorage.setItem('users', JSON.stringify(users));
+function salavarUsers(local){
+  localStorage.setItem('users', JSON.stringify(id));
 }
+salavarUsers(local);
 //criação d login
 
 app.post(`/login`, (request, response) => {
@@ -123,7 +124,7 @@ app.post(`/login`, (request, response) => {
     });
   });
 
-  salavarUsers(users);
+ 
 
 // criação de recados
 const listaRecados = [];
