@@ -4,7 +4,7 @@ import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
 var cors = require('cors'); 
 var app = express();
-app.use(cors("*"));
+app.use(cors());
 app.use(express.json());
 
 
