@@ -25,7 +25,21 @@ app.listen(8080, () => console.log('Servidor iniciado'));
 
 //lista de usuarios
 let users = [];
+const existe = users.some((user) => users.email === user.email );
+if (!existe) {
+  return response.status(400).json({
+    sucesso: false,
+    dados: null,
+    mensagem: "Usuário está cadastrado!.",
+  });
 
+} else {
+  return response.status(400).json({
+    sucesso: true,
+    dados: null,
+    mensagem: "Email já Existe.",
+  });
+  }
 app.get(`/user`, (request, response) => {
   return response.json(users);
 });
@@ -42,25 +56,9 @@ app.post(`/user`, (request, response) => {
             email: user.email,
             senha: hash
         }); 
-
-const existe = users.some((user) => users.email === user.email );
-if (!existe) {
-  return response.status(400).json({
-    sucesso: false,
-    dados: null,
-    mensagem: "Usuário está cadastrado!.",
+      }
   });
-
-} else {
-  return response.status(400).json({
-    sucesso: true,
-    dados: null,
-    mensagem: "Email já Existe.",
-  });
-    }
-  }
-});
-
+    });
 
 //criação d login
 
@@ -179,4 +177,4 @@ app.delete(`/recados/:id`, (request, response) => {
     return response.json(`Recado deletado`);
   })
   
-});
+
