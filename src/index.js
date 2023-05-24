@@ -6,6 +6,8 @@ const app = express();
 app.use(express.json());
 import cors from "cors"
 app.use(cors())
+const LocalStorage = require('node-localstorage').LocalStorage;
+const localStorage = new LocalStorage('./localStorage');
 app.use(
   cors({
     origin: "*",
@@ -15,7 +17,7 @@ app.use(
 );
   
 
-app.get('/', (request, response) => {
+app.get('/', (_request, response) => {
 return response.json('OK');
 
 });
@@ -26,7 +28,7 @@ app.listen(8080, () => console.log('Servidor iniciado'));
 //lista de usuarios
 let users = [];
 
-app.get(`/user`, (request, response) => {
+app.get(`/user`, (_request, response) => {
   return response.json(users);
 });
 //criação de usuario
@@ -43,7 +45,7 @@ app.post(`/user`, (request, response) => {
     
   }
   
-  bcrypt.hash(user.senha, saltRounds, function(err, hash) {
+  bcrypt.hash(user.senha, saltRounds, function(_err, hash) {
     if(hash){
         users.push({
             id: Math.floor(Math.random()*67676),
@@ -62,7 +64,12 @@ app.post(`/user`, (request, response) => {
 
 });
 //criação d login
+function salvarUsers(usuarios){
+  localStorage.setItem('usuarios', JSON.stringify(users));
 
+}
+
+salvarUsers();
 app.post(`/login`, (request, response) => {
     const dadosDoUsuario = request.body;
   
@@ -98,7 +105,7 @@ app.post(`/login`, (request, response) => {
 // criação de recados
 const listaRecados = [];
 
-app.get(`/list`, (request, response) => {
+app.get(`/list`, (_request, response) => {
   return response.json(listaRecados);
 });
 
@@ -133,7 +140,7 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
-app.get(`/atualizar/:idR`, (request, response) => {
+app.get(`/atualizar/:idR`, (_request, response) => {
   return response.json(recadoAtualizado);
 });
 const recadoAtualizado = [];
