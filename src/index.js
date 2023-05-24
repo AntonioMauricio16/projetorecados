@@ -1,5 +1,4 @@
-const LocalStorage = require('node-localstorage').LocalStorage;
-const localStorage = new LocalStorage('./localStorage');
+
 import express from 'express';
 import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
@@ -84,12 +83,7 @@ return response.status(201).json();
         return response.status(400).json("Ocorreu um erro:" + err)
     }
   });
-
-  localStorage.setItem('users', JSON.stringify(id));
 });
-
-  
-
 
 //criação d login
 
