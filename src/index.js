@@ -78,11 +78,15 @@ return response.status(201).json();
   });
 
   
- localStorage.setItem('users', email, nome);
+ 
 });
 
 //criação d login
 
+function salavarUsers(_use){
+  localStorage.setItem('use', email, nome);
+}
+salavarUsers(_use);
 
 
 app.post(`/login`, (request, response) => {
