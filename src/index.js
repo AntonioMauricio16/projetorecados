@@ -48,7 +48,9 @@ if (existe) {
     sucesso: false,
     dados: null,
     mensagem: "Outro usuário já está cadastrado com este e-mail.",
+    
   });
+  
 }
 users.push({
   id: Math.floor(Math.random() * 67676),
@@ -82,11 +84,6 @@ return response.status(201).json();
 });
 
 //criação d login
-
-function salavarUsers(_use){
-  localStorage.setItem('use', email, nome);
-}
-salavarUsers(_use);
 
 
 app.post(`/login`, (request, response) => {
