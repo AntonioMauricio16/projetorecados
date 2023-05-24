@@ -5,15 +5,7 @@ import bcrypt, { hash } from "bcrypt";
 const app = express();
 app.use(express.json());
 import cors from "cors"
-app.use(cors())
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-  
+app.use(cors("*"))
 
 app.get('/', (request, response) => {
 return response.json('OK');
