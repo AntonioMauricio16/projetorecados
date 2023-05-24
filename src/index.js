@@ -65,6 +65,13 @@ else if(!existe){
     mensagem: "Outro usuário já está cadastrado com este e-mail.",
   });
 }
+       
+    } else {
+        return response.status(400).json("Ocorreu um erro:" + err)
+    }
+  });
+});
+
 
 //criação d login
 
