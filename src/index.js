@@ -1,5 +1,5 @@
 
-import express from 'express';
+const express = require('express');
 import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
 const app = express();
