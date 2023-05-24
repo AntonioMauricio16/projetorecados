@@ -133,11 +133,11 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
-app.get(`/atualizar/:id`, (request, response) => {
+app.get(`/atualizar/:idR`, (request, response) => {
   return response.json(recadoAtualizado);
 });
 const recadoAtualizado = [];
-app.put('/atualizar/:id', (request, response) => {
+app.put('/atualizar/:idR', (request, response) => {
     
   
     const { idR } = request.params; 
