@@ -43,13 +43,9 @@ app.post(`/user`, (request, response) => {
             senha: hash
         }); 
         const dados = request.body;
-const novoUsuario = {
-  id: Math.floor(Math.random()*67676),
-  nome: dados.nome,
-  email: dados.email,
-  senha: hash,
-};
-const existe = users.some((users) => users.email === novoUsuario.email );
+
+
+const existe = users.some((user) => user.email === user.email );
 if (existe) {
   return response.status(400).json({
     sucesso: false,
