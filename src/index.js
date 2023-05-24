@@ -2,9 +2,9 @@
 const express = require('express');
 import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
-const app = express();
 app.use(express.json());
-const cors = require("cors") 
+const cors = require('cors')
+const app = express()
 app.use(cors("*"))
 
 app.get('/', (request, response) => {
@@ -125,11 +125,11 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
-app.get(`/atualizar/:idR`, (request, response) => {
+app.get(`/atualizar/:id`, (request, response) => {
   return response.json(recadoAtualizado);
 });
 const recadoAtualizado = [];
-app.put('/atualizar/:idR', (request, response) => {
+app.put('/atualizar/:id', (request, response) => {
     
   
     const { id } = request.params; 
