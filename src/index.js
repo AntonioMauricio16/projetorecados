@@ -80,7 +80,7 @@ return response.status(201).json();
 
 //criação d login
 
-function salvarUsers(users){
+function salvarUsers(use){
   localStorage.setItem('users', JSON.stringify(users));
 }
 
@@ -116,7 +116,7 @@ app.post(`/login`, (request, response) => {
     });
   });
 
- salvarUsers(users);
+ salvarUsers(use);
 
 // criação de recados
 const listaRecados = [];
