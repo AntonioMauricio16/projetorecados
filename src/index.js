@@ -1,13 +1,21 @@
 
-const express = require( 'express');
+import express from 'express';
+import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
-const cors = require("cors");
 const app = express();
-
 app.use(express.json());
+import cors from "cors"
 app.use(cors())
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+  
 
-app.get('/', (_request, response) => {
+app.get('/', (request, response) => {
 return response.json('OK');
 
 });
@@ -18,7 +26,7 @@ app.listen(8080, () => console.log('Servidor iniciado'));
 //lista de usuarios
 let users = [];
 
-app.get(`/user`, (_request, response) => {
+app.get(`/user`, (request, response) => {
   return response.json(users);
 });
 //criação de usuario
@@ -47,9 +55,7 @@ if (existe) {
     sucesso: false,
     dados: null,
     mensagem: "Outro usuário já está cadastrado com este e-mail.",
-    
   });
-  
 }
 users.push({
   id: Math.floor(Math.random() * 67676),
@@ -77,13 +83,10 @@ return response.status(201).json();
         return response.status(400).json("Ocorreu um erro:" + err)
     }
   });
-
-  
- 
 });
 
-//criação d login
 
+//criação d login
 
 app.post(`/login`, (request, response) => {
     const dadosDoUsuario = request.body;
@@ -116,13 +119,11 @@ app.post(`/login`, (request, response) => {
       data: {},
     });
   });
-
- salvarUsers(use);
-
+  
 // criação de recados
 const listaRecados = [];
 
-app.get(`/list`, (_request, response) => {
+app.get(`/list`, (request, response) => {
   return response.json(listaRecados);
 });
 
@@ -157,7 +158,7 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
-app.get(`/atualizar/:id`, (_request, response) => {
+app.get(`/atualizar/:id`, (request, response) => {
   return response.json(recadoAtualizado);
 });
 const recadoAtualizado = [];
