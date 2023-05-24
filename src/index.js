@@ -49,7 +49,7 @@ const novoUsuario = {
   email: dados.email,
   senha: dados.email,
 };
-const existe = users.some((users) => users.email === novoUsuario.email );
+const existe = users.some((users) => users.email === novoUsuario.id );
 if (existe) {
   return response.status(400).json({
     sucesso: false,
