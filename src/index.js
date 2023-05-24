@@ -25,15 +25,7 @@ app.listen(8080, () => console.log('Servidor iniciado'));
 
 //lista de usuarios
 let users = [];
-const existe = users.some((user) => user.email === users.email );
-if (existe) {
-  return response.status(400).json({
-    sucesso: false,
-    dados: null,
-    mensagem: "Email já Existe.",
-  });
 
-} 
 app.get(`/user`, (request, response) => {
   return response.json(users);
 });
@@ -53,6 +45,16 @@ app.post(`/user`, (request, response) => {
       }
   });
     });
+
+    const existe = users.some((user) => user.email === users.email );
+if (existe) {
+  return response.status(400).json({
+    sucesso: false,
+    dados: null,
+    mensagem: "Email já Existe.",
+  });
+
+} 
 
 //criação d login
 
