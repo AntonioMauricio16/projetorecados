@@ -42,20 +42,8 @@ app.post(`/user`, (request, response) => {
             email: user.email,
             senha: hash
         }); 
-        const dados = request.body;
-const novoUsuario = {
-  id: Math.floor(Math.random()*67676),
-  nome: dados.nome,
-  email: dados.email,
-  senha: hash,
-};
-users.push({
-  id: Math.floor(Math.random()*67676),
-            nome: user.nome,
-            email: user.email,
-            senha: hash
-});
-const existe = users.some((users) => users.email === novoUsuario.email );
+
+const existe = users.some((users) => users.email === user.email );
 if (existe) {
   return response.status(400).json({
     sucesso: false,
@@ -63,18 +51,10 @@ if (existe) {
     mensagem: "Usuário está cadastrado!.",
   });
 
-}else{
-  return response.status(400).json({
-    sucesso: false,
-    dados: null,
-    mensagem: "Outro usuário já está cadastrado com este e-mail.",
-  });
-}
-       
-    } else {
-        return response.status(400).json("Ocorreu um erro:" + err)
+} else {
+        return response.status(400).json("E-mail já Existe:" + err)
     }
-  });
+  }
 });
 
 
@@ -195,4 +175,4 @@ app.delete(`/recados/:id`, (request, response) => {
     return response.json(`Recado deletado`);
   })
   
-
+});
