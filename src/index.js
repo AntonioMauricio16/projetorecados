@@ -16,7 +16,7 @@ app.use(
 );
   
 
-app.get('/', (request, response) => {
+app.get('/', (_request, response) => {
 return response.json('OK');
 
 });
@@ -27,7 +27,7 @@ app.listen(8080, () => console.log('Servidor iniciado'));
 //lista de usuarios
 let users = [];
 
-app.get(`/user`, (request, response) => {
+app.get(`/user`, (_request, response) => {
   return response.json(users);
 });
 //criação de usuario
@@ -86,7 +86,7 @@ return response.status(201).json();
   });
 });
 
-function salavarUsers(){
+function salavarUsers(User){
   localStorage.setItem('users', JSON.stringify(users));
 }
 //criação d login
@@ -123,12 +123,12 @@ app.post(`/login`, (request, response) => {
     });
   });
 
-  salavarUsers();
-  
+  salavarUsers(users);
+
 // criação de recados
 const listaRecados = [];
 
-app.get(`/list`, (request, response) => {
+app.get(`/list`, (_request, response) => {
   return response.json(listaRecados);
 });
 
@@ -163,7 +163,7 @@ app.post(`/recados`, (request, response) => {
 });
 
 /*Atualizacao dos recados*/
-app.get(`/atualizar/:id`, (request, response) => {
+app.get(`/atualizar/:id`, (_request, response) => {
   return response.json(recadoAtualizado);
 });
 const recadoAtualizado = [];
