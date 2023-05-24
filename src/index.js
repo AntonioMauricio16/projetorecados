@@ -4,7 +4,7 @@ import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
 const app = express();
 app.use(express.json());
-import cors from "cors"
+const cors = require("cors") 
 app.use(cors("*"))
 
 app.get('/', (request, response) => {
