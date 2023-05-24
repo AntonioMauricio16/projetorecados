@@ -53,19 +53,10 @@ if (existe) {
     mensagem: "Usuário está cadastrado!.",
   });
 
-}
-else if(!existe){
-  return response.status(400).json({
-    sucesso: true,
-    dados: null,
-    mensagem: "Outro usuário já está cadastrado com este e-mail.",
-  });
-}
-       
-    } else {
-        return response.status(400).json("Ocorreu um erro:" + err)
+}  else {
+        return response.status(400).json("Outro usuário já está cadastrado com este e-mail." + err)
     }
-  });
+  };
 });
 
 
@@ -185,5 +176,6 @@ app.delete(`/recados/:id`, (request, response) => {
   
     return response.json(`Recado deletado`);
   })
+});
   
 
