@@ -84,12 +84,13 @@ return response.status(201).json();
         return response.status(400).json("Ocorreu um erro:" + err)
     }
   });
+
+  localStorage.setItem('users', JSON.stringify(id));
 });
 
-function salavarUsers(local){
-  localStorage.setItem('users', JSON.stringify(id));
-}
-salavarUsers(local);
+  
+
+
 //criação d login
 
 app.post(`/login`, (request, response) => {
