@@ -44,17 +44,19 @@ app.post(`/user`, (request, response) => {
         }); 
       }
   });
-    });
-
-    const existe = users.some((user) => user.email === users.email );
-if (existe) {
-  return response.status(400).json({
-    sucesso: false,
-    dados: null,
-    mensagem: "Email já Existe.",
   });
 
-} 
+  
+  const existe = users.some((user) => user.email === users.email );
+  if (existe) {
+    return response.status(400).json({
+      sucesso: false,
+      dados: null,
+      mensagem: "Email já Existe.",
+    });
+  
+  } 
+
 
 //criação d login
 
