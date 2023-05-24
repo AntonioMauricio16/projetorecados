@@ -124,11 +124,6 @@ app.post(`/login`, (request, response) => {
   });
 
   salavarUsers();
-
-
-  
-
-  
   
 // criação de recados
 const listaRecados = [];
