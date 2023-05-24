@@ -1,12 +1,18 @@
 
-const express = require('express');
-const express =  require('express');
+import express from 'express';
+import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
 const app = express();
 app.use(express.json());
-const cors = require("cors") 
-app.use(cors("*"))
-
+import cors from "cors"
+app.use(cors())
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
   
 
 app.get('/', (request, response) => {
