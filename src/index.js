@@ -118,7 +118,7 @@ app.post(`/recados`, (request, response) => {
   //Fazer validacao dos dados do recado
 
   const novoRecado = {
-    id: new Date().getTime(),
+    idR: new Date().getTime(),
     titulo: dados.titulo,
     descricao: dados.descricao,
     autor: usuario,
@@ -140,7 +140,7 @@ const recadoAtualizado = [];
 app.put('/atualizar/:id', (request, response) => {
     
   
-    const { id } = request.params; 
+    const { idR } = request.params; 
     const { titulo, descricao } = request.body 
     const userIndex = recadoAtualizado.findIndex(user => user.id === id);
   
@@ -150,7 +150,7 @@ app.put('/atualizar/:id', (request, response) => {
     }
   
     const user = {
-        id,
+        idR,
         titulo,
         descricao,
         
