@@ -1,19 +1,12 @@
 
-import express from 'express';
-import express, { response } from 'express';
+const express = require( 'express');
 import bcrypt, { hash } from "bcrypt";
+const cors = require("cors");
 const app = express();
+const LocalStorage = require('node-localstorage').LocalStorage;
+const localStorage = new LocalStorage('./localStorage');
 app.use(express.json());
-import cors from "cors"
 app.use(cors())
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-  
 
 app.get('/', (_request, response) => {
 return response.json('OK');
@@ -87,6 +80,10 @@ return response.status(201).json();
 
 //criação d login
 
+function salvarUsers(users){
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
 app.post(`/login`, (request, response) => {
     const dadosDoUsuario = request.body;
   
@@ -119,7 +116,7 @@ app.post(`/login`, (request, response) => {
     });
   });
 
- 
+ salvarUsers(users);
 
 // criação de recados
 const listaRecados = [];
