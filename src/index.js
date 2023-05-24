@@ -3,8 +3,7 @@ const express = require( 'express');
 import bcrypt, { hash } from "bcrypt";
 const cors = require("cors");
 const app = express();
-const LocalStorage = require('node-localstorage').LocalStorage;
-const localStorage = new LocalStorage('./localStorage');
+
 app.use(express.json());
 app.use(cors())
 
