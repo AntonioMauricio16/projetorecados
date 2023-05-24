@@ -46,7 +46,7 @@ app.post(`/user`, (request, response) => {
 const existe = users.some((users) => users.email === user.email );
 if (existe) {
   return response.status(400).json({
-    sucesso: false,
+    sucesso: true,
     dados: null,
     mensagem: "Usuário está cadastrado!.",
   });
