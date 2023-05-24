@@ -50,7 +50,13 @@ const novoUsuario = {
   senha: hash,
 };
 const existe = users.some((users) => users.email === novoUsuario.email);
-if (existe) {
+if (!existe) {
+  return response.status(400).json({
+    sucesso: false,
+    dados: null,
+    mensagem: " Usuário cadastrado!.",
+  });
+}else{
   return response.status(400).json({
     sucesso: false,
     dados: null,
