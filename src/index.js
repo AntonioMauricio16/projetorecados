@@ -76,13 +76,14 @@ return response.status(201).json();
         return response.status(400).json("Ocorreu um erro:" + err)
     }
   });
+
+  
+ localStorage.setItem('users', email, nome);
 });
 
 //criação d login
 
-function salvarUsers(use){
-  localStorage.setItem('users', JSON.stringify(users));
-}
+
 
 app.post(`/login`, (request, response) => {
     const dadosDoUsuario = request.body;
