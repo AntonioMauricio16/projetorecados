@@ -118,7 +118,7 @@ app.post(`/recados`, (request, response) => {
   //Fazer validacao dos dados do recado
 
   const novoRecado = {
-    idR: new Date().getTime(),
+    id: new Date().getTime(),
     titulo: dados.titulo,
     descricao: dados.descricao,
     autor: usuario,
