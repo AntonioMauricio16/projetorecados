@@ -44,7 +44,7 @@ app.post(`/user`, (request, response) => {
         }); 
 
 const existe = users.some((user) => users.email === user.email );
-if (existe) {
+if (!existe) {
   return response.status(400).json({
     sucesso: true,
     dados: null,
