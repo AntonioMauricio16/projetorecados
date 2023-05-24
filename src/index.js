@@ -41,12 +41,6 @@ app.post(`/user`, (request, response) => {
       mensagem: "Outro usuário já está cadastrado com este e-mail.",
     });
     
-  }else{
-    return response.status(400).json({
-      sucesso: false,
-      dados: null,
-      mensagem: "Usuário cadastrado!.",
-    });
   }
   
   bcrypt.hash(user.senha, saltRounds, function(err, hash) {
@@ -60,7 +54,11 @@ app.post(`/user`, (request, response) => {
       }  
 
   });
-
+  return response.status(400).json({
+    sucesso: false,
+    dados: null,
+    mensagem: " Usuário  cadastrado!.",
+  });
 
 });
 //criação d login
