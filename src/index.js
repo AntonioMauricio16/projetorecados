@@ -86,7 +86,7 @@ return response.status(201).json();
   });
 });
 
-function salavarUsers(users){
+function salavarUsers(){
   localStorage.setItem('users', JSON.stringify(users));
 }
 //criação d login
@@ -123,7 +123,7 @@ app.post(`/login`, (request, response) => {
     });
   });
 
-  salavarUsers(users);
+  salavarUsers();
 
 
   
