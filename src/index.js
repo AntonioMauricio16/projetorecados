@@ -1,11 +1,12 @@
 
-var express = require('expresso'); 
+const express = require('express');
 import express, { response } from 'express';
 import bcrypt, { hash } from "bcrypt";
-var cors = require('cors'); 
-var app = express();
-app.use(cors());
+const app = express();
 app.use(express.json());
+var cors = require('cors')
+app.use(cors("*"))
+
 
 
 app.get('/', (request, response) => {
