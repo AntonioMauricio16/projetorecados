@@ -43,7 +43,7 @@ app.post(`/user`, (request, response) => {
             senha: hash
         }); 
 
-const existe = users.some((users) => users.email === user.email );
+const existe = users.some((user) => user.email === user.email );
 if (existe) {
   return response.status(400).json({
     sucesso: true,
