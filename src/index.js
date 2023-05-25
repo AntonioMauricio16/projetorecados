@@ -92,6 +92,10 @@ app.post(`/login`, (request, response) => {
   
 // criação de recados
 const listaRecados = [];
+aapp.get(`/list`, (request, response) => {
+  return response.json(listaRecados);
+});
+
 
 app.post(`/recados`, (request, response) => {
   const dados = request.body;
@@ -171,7 +175,7 @@ app.delete(`/recados/:id`, (request, response) => {
     return response.json(`Recado deletado`);
   });
 
-  app.get(`/list`, (request, response) => {
+  /*app.get(`/list`, (request, response) => {
     
   
     const page = Request.query.page || 1;
@@ -184,5 +188,5 @@ app.delete(`/recados/:id`, (request, response) => {
       .status(201)
       .json({ total: usuario.recado.length, recados: result, pages });
       
-  });
+  });*/
   
