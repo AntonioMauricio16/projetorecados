@@ -172,13 +172,7 @@ app.delete(`/recados/:id`, (request, response) => {
   });
 
   app.get(`/list`, (request, response) => {
-    const usuarioId = parseInt(request.params.id);
-  
-    const usuario = listaRecados.find((user) => user.id === usuarioId);
-  
-    if (!usuario) {
-      return res.status(404).json("Usuário não encontrado.");
-    }
+    
   
     const page = Request.query.page || 1;
     const pages = Math.ceil(usuario.recado?.length / 3);
