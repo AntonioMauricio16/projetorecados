@@ -92,7 +92,7 @@ app.post(`/login`, (request, response) => {
   
 // criação de recados
 const listaRecados = [];
-aapp.get(`/list`, (request, response) => {
+app.get(`/list`, (request, response) => {
   return response.json(listaRecados);
 });
 
