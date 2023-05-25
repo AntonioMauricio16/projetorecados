@@ -65,7 +65,7 @@ function validaPeloId(request, response, next) {
     if (!senhaComparada) {
       return response.status(401).send('Email ou senha inválidos');
     }else{ 
-      response.status(202).json(`${emailVerificado.id}Usuario Logado!`)
+      response.status(202).json(emailVerificado.id);
      
     }
   });
