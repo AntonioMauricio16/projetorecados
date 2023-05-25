@@ -39,8 +39,8 @@ function validaPeloId(request, response, next) {
 //ele vai criar nosso usuario// utilizando metodo post //
   app.post('/usuarios',async (request,response)=>{
       let { nome,email,senha}= request.body;
-      let validasetemusuariocadastrado = usuarios.find(user => user.email === email)
-      if(validasetemusuariocadastrado){
+      let validaUarioccdastrado = usuarios.find(user => user.email === email)
+      if(validaUarioccdastrado){
           response.status(409).send("usuario ja existente")
       }else{
           let id = Math.floor(Math.random()*6767);
@@ -52,7 +52,7 @@ function validaPeloId(request, response, next) {
   });
 
 //criando login // utilizando metodo post //
-  app.post('/usuarios/login', async (request, response) => {
+  app.post('/login', async (request, response) => {
     let { email, senha } = request.body;
     let emailVerificado = usuarios.find(user => user.email === email);
     
@@ -84,9 +84,9 @@ function validaPeloId(request, response, next) {
       };
       const id = request.params.id;
 
-      let pegueiIdParaRecado = usuarios.findIndex(usuario=> usuario.id === Number(id));
+      let IdParaRecado = usuarios.findIndex(usuario=> usuario.id === Number(id));
 
-      usuarios[pegueiIdParaRecado].recado.push(recadoCriado);
+      usuarios[IdParaRecado].recado.push(recadoCriado);
 
     return response.status(201).send("Recado criado com sucesso")
   });
