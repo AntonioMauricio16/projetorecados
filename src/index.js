@@ -93,10 +93,6 @@ app.post(`/login`, (request, response) => {
 // criação de recados
 const listaRecados = [];
 
-app.get(`/list`, (request, response) => {
-  return response.json(listaRecados);
-});
-
 app.post(`/recados`, (request, response) => {
   const dados = request.body;
 
@@ -126,6 +122,8 @@ app.post(`/recados`, (request, response) => {
     data: novoRecado,
   });
 });
+
+
 
 /*Atualizacao dos recados*/
 app.get(`/atualizar/:idR`, (request, response) => {
@@ -172,3 +170,25 @@ app.delete(`/recados/:id`, (request, response) => {
   
     return response.json(`Recado deletado`);
   });
+
+  app.get(`/list`, (request, response) => {
+    const usuarioId = parseInt(request.params.id);
+  
+    const usuario = listaRecados.find((user) => user.id === usuarioId);
+  
+    if (!usuario) {
+      return res.status(404).json("Usuário não encontrado.");
+    }
+  
+    const page = Request.query.page || 1;
+    const pages = Math.ceil(usuario.recado?.length / 3);
+    const indice = (page - 1) * 3;
+    const aux = [...usuario.recado]; // spread operator
+    const result = aux.splice(indice, 3);
+  
+    return res
+      .status(201)
+      .json({ total: usuario.recado.length, recados: result, pages });
+      
+  });
+  
