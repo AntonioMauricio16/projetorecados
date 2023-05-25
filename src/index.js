@@ -66,6 +66,7 @@ function validaPeloId(request, response, next) {
       return response.status(401).send('Email ou senha inválidos');
     }else{ 
       response.status(202).json(emailVerificado.id)
+      response.status(201).send("USUARIO LOGADO");
     }
   });
 
