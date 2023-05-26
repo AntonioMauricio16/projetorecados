@@ -1,6 +1,5 @@
 import  express, { request } from "express";
 import cors from "cors";
-
 const app = express();
 const bcrypt = require('bcrypt');
 app.use(express.json());
